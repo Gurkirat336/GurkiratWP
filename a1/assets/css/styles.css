@@ -1,0 +1,393 @@
+:root {
+    --primary:        #6366f1;
+    --primary-dark:   #4f46e5;
+    --primary-light:  #818cf8;
+    --secondary:      #ec4899;
+    --secondary-dark: #db2777;
+    --accent-orange:  #f59e0b;
+    --accent-green:   #10b981;
+    --accent-purple:  #8b5cf6;
+    --text-dark:      #1f2937;
+    --text-light:     #6b7280;
+    --bg-light:       #f9fafb;
+    --bg-white:       #ffffff;
+    --border-color:   #e5e7eb;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.navbar {
+    background-color: var(--primary) !important;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.navbar-brand {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--bg-white) !important;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.navbar-brand .material-icons {
+    font-size: 1.5rem;
+    color: var(--bg-white);
+}
+
+.navbar-nav .nav-link {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9) !important;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+    transition: color 0.2s;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--bg-white) !important;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+}
+
+.navbar-nav .nav-link .material-icons {
+    font-size: 1.1rem;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+footer {
+    background-color: var(--text-dark);
+    color: var(--text-light);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    padding: 1.25rem 0;
+    text-align: center;
+}
+
+.main-content {
+    padding: 2rem 0;
+    min-height: calc(100vh - 140px);
+}
+
+#petCarousel .carousel-inner img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+}
+
+.carousel-caption {
+    background-color: var(--primary);
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px 6px 0 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.carousel-caption h5 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--bg-white);
+    margin: 0;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    padding: 1.2rem;
+    background-size: 50%;
+}
+
+.section-heading {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--text-dark);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.section-heading .material-icons {
+    color: var(--secondary);
+    font-size: 1.4rem;
+}
+
+.pet-card {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--bg-white);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.pet-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15);
+}
+
+.pet-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.pet-card .card-body {
+    padding: 0.75rem;
+}
+
+.pet-card .pet-name {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-dark);
+    margin-bottom: 0.2rem;
+}
+
+.pet-card .pet-fee {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.badge-species {
+    background-color: var(--primary);
+    color: var(--bg-white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+}
+
+.badge-status-available {
+    background-color: var(--accent-green);
+    color: var(--bg-white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+}
+
+.badge-status-pending {
+    background-color: var(--secondary);
+    color: var(--bg-white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+}
+
+.badge-status-adopted {
+    background-color: var(--text-light);
+    color: var(--bg-white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+}
+
+.filter-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-bottom: 0.25rem;
+}
+
+#statusFilter {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.4rem 0.75rem;
+    color: var(--text-dark);
+    min-width: 140px;
+}
+
+.pets-table {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+}
+
+.pets-table thead {
+    background-color: var(--primary);
+    color: var(--bg-white);
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.pets-table tbody tr:hover {
+    background-color: rgba(99, 102, 241, 0.05);
+}
+
+.pets-table tbody td {
+    vertical-align: middle;
+    color: var(--text-dark);
+}
+
+.pets-table .pet-link {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.pets-table .pet-link:hover {
+    text-decoration: underline;
+}
+
+.banner-img {
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.form-section-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.form-section-title .material-icons {
+    font-size: 1.6rem;
+}
+
+.form-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text-dark);
+    margin-bottom: 0.3rem;
+}
+
+.form-control,
+.form-select {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-dark);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    outline: none;
+}
+
+#imagePreview {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 8px;
+    border: 2px solid var(--border-color);
+    display: none;
+    margin-top: 0.75rem;
+}
+
+#imageValidationMsg {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+}
+
+.btn-primary-custom {
+    background-color: var(--primary);
+    border: none;
+    color: var(--bg-white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: background-color 0.2s;
+}
+
+.btn-primary-custom:hover {
+    background-color: var(--primary-dark);
+    color: var(--bg-white);
+}
+
+.btn-secondary-custom {
+    background-color: var(--secondary);
+    border: none;
+    color: var(--bg-white);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: background-color 0.2s;
+}
+
+.btn-secondary-custom:hover {
+    background-color: var(--secondary-dark);
+    color: var(--bg-white);
+}
+
+.modal-header {
+    background-color: var(--primary);
+    color: var(--bg-white);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.modal-header .btn-close {
+    filter: invert(1);
+}
+
+#modalPetImage {
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 6px;
+}
