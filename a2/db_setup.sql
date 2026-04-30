@@ -1,7 +1,3 @@
--- PetConnect Database Setup
--- Local: database name is 'petconnect'
--- On Jacob 5 (jupiter.csit.rmit.edu.au): database name is the student ID 's4092023'
-
 CREATE DATABASE IF NOT EXISTS `petconnect`;
 USE `petconnect`;
 
