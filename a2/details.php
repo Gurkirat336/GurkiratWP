@@ -11,11 +11,14 @@ if ($id === 0) {
     exit;
 }
 
-$stmt = mysqli_prepare($conn, "SELECT * FROM pets WHERE id = ?");
+$stmt = mysqli_prepare($conn, "SELECT id, name, species, breed, gender, size, age_years, age_months, adoption_fee, description, health_info, status, image FROM pets WHERE id = ?");
 mysqli_stmt_bind_param($stmt, 'i', $id);
-mysqli_execute($stmt);
-$result = mysqli_get_result($stmt);
-$pet = mysqli_fetch_assoc($result);
+mysqli_stmt_execute($stmt);
+mysqli_stmt_bind_result($stmt, $pid, $name, $species, $breed, $gender, $size, $age_years, $age_months, $adoption_fee, $description, $health_info, $status, $image);
+$pet = null;
+if (mysqli_stmt_fetch($stmt)) {
+    $pet = ['id' => $pid, 'name' => $name, 'species' => $species, 'breed' => $breed, 'gender' => $gender, 'size' => $size, 'age_years' => $age_years, 'age_months' => $age_months, 'adoption_fee' => $adoption_fee, 'description' => $description, 'health_info' => $health_info, 'status' => $status, 'image' => $image];
+}
 mysqli_stmt_close($stmt);
 
 if (!$pet) {

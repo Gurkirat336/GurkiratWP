@@ -8,7 +8,7 @@ include 'includes/header.inc';
 
 <div class="row g-4">
     <div class="col-md-4">
-        <img src="assets/images/pets/banner.jpg" alt="Pets Banner" class="img-fluid rounded w-100">
+        <img src="assets/images/banner.jpg" alt="Pets Banner" class="img-fluid rounded w-100">
     </div>
     <div class="col-md-8">
         <h2 class="gradient-heading mb-4">All Available Pets</h2>
@@ -26,9 +26,14 @@ include 'includes/header.inc';
                 <tbody>
 <?php
 $stmt = mysqli_prepare($conn, "SELECT id, name, species, breed, size, adoption_fee FROM pets ORDER BY name ASC");
-mysqli_execute($stmt);
-$result = mysqli_get_result($stmt);
-while ($pet = mysqli_fetch_assoc($result)) {
+mysqli_stmt_execute($stmt);
+mysqli_stmt_bind_result($stmt, $id, $name, $species, $breed, $size, $adoption_fee);
+$pets = [];
+while (mysqli_stmt_fetch($stmt)) {
+    $pets[] = ['id' => $id, 'name' => $name, 'species' => $species, 'breed' => $breed, 'size' => $size, 'adoption_fee' => $adoption_fee];
+}
+mysqli_stmt_close($stmt);
+foreach ($pets as $pet) {
 ?>
                     <tr>
                         <td><a href="details.php?id=<?php echo $pet['id']; ?>"><?php echo htmlspecialchars($pet['name']); ?></a></td>
@@ -39,7 +44,6 @@ while ($pet = mysqli_fetch_assoc($result)) {
                     </tr>
 <?php
 }
-mysqli_stmt_close($stmt);
 ?>
                 </tbody>
             </table>

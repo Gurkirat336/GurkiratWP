@@ -44,10 +44,11 @@ document.addEventListener('DOMContentLoaded', function () {
             var selected = this.value;
             var items = document.querySelectorAll('.gallery-item');
             items.forEach(function (item) {
+                var col = item.closest('.col-6');
                 if (selected === 'all' || item.getAttribute('data-status') === selected) {
-                    item.style.display = 'block';
+                    col.style.display = 'block';
                 } else {
-                    item.style.display = 'none';
+                    col.style.display = 'none';
                 }
             });
         });

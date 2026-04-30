@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark navbar-petconnect">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center gap-2" href="<?php echo $basePath; ?>index.php">
-            <img src="<?php echo $basePath; ?>assets/images/PetConnect_logo.png" height="30" alt="PetConnect">
+            <img src="<?php echo $basePath; ?>assets/images/banner.jpg" height="30" alt="PetConnect">
             PetConnect
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">

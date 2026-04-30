@@ -25,9 +25,14 @@ include 'includes/header.inc';
 <div class="row g-3">
 <?php
 $stmt = mysqli_prepare($conn, "SELECT id, name, species, adoption_fee, status, image FROM pets ORDER BY created_at DESC");
-mysqli_execute($stmt);
-$result = mysqli_get_result($stmt);
-while ($pet = mysqli_fetch_assoc($result)) {
+mysqli_stmt_execute($stmt);
+mysqli_stmt_bind_result($stmt, $id, $name, $species, $adoption_fee, $status, $image);
+$pets = [];
+while (mysqli_stmt_fetch($stmt)) {
+    $pets[] = ['id' => $id, 'name' => $name, 'species' => $species, 'adoption_fee' => $adoption_fee, 'status' => $status, 'image' => $image];
+}
+mysqli_stmt_close($stmt);
+foreach ($pets as $pet) {
     $status = strtolower($pet['status']);
 ?>
     <div class="col-6 col-md-3">
@@ -47,7 +52,6 @@ while ($pet = mysqli_fetch_assoc($result)) {
     </div>
 <?php
 }
-mysqli_stmt_close($stmt);
 ?>
 </div>
 

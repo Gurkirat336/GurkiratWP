@@ -6,6 +6,7 @@ include 'includes/db_connect.inc';
 include 'includes/header.inc';
 ?>
 
+<div class="carousel-full">
 <div id="petCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#petCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -52,6 +53,7 @@ include 'includes/header.inc';
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+</div>
 
 <h2 class="home-section-title">
     <span class="material-icons">favorite</span> Recently Added Pets
@@ -60,9 +62,14 @@ include 'includes/header.inc';
 <div class="row g-3">
 <?php
 $stmt = mysqli_prepare($conn, "SELECT id, name, species, adoption_fee, image FROM pets ORDER BY created_at DESC LIMIT 4");
-mysqli_execute($stmt);
-$result = mysqli_get_result($stmt);
-while ($pet = mysqli_fetch_assoc($result)) {
+mysqli_stmt_execute($stmt);
+mysqli_stmt_bind_result($stmt, $id, $name, $species, $adoption_fee, $image);
+$pets = [];
+while (mysqli_stmt_fetch($stmt)) {
+    $pets[] = ['id' => $id, 'name' => $name, 'species' => $species, 'adoption_fee' => $adoption_fee, 'image' => $image];
+}
+mysqli_stmt_close($stmt);
+foreach ($pets as $pet) {
 ?>
     <div class="col-6 col-md-3">
         <div class="pet-card">
@@ -75,7 +82,6 @@ while ($pet = mysqli_fetch_assoc($result)) {
     </div>
 <?php
 }
-mysqli_stmt_close($stmt);
 ?>
 </div>
 

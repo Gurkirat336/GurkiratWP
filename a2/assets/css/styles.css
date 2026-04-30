@@ -286,3 +286,8 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
   font-size: 14px !important;
   vertical-align: middle;
 }
+
+.carousel-full {
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
