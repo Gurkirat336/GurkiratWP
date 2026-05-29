@@ -11,7 +11,7 @@ include 'includes/header.inc';
     <h2 class="gallery-heading">Pet Gallery</h2>
     <div>
         <span class="filter-label">Filter by Status:</span>
-        <select id="statusFilter" class="form-select form-select-sm d-inline-block" style="width:auto;">
+        <select id="statusFilter" class="form-select form-select-sm gallery-filter-select">
             <option value="all">Show All</option>
             <option value="Available">Available</option>
             <option value="Pending">Pending</option>

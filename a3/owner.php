@@ -56,10 +56,17 @@ include 'includes/header.inc';
 
 <div class="row g-3">
 <?php
-$sql = "SELECT pet_id, name, species, adoption_fee, status, image_path FROM pets WHERE user_id = " . $u_id . " ORDER BY created_at DESC";
-$result = mysqli_query($conn, $sql);
+$stmt2 = mysqli_prepare($conn, "SELECT pet_id, name, species, adoption_fee, status, image_path FROM pets WHERE user_id = ? ORDER BY created_at DESC");
+mysqli_stmt_bind_param($stmt2, 'i', $u_id);
+mysqli_stmt_execute($stmt2);
+mysqli_stmt_bind_result($stmt2, $op_pet_id, $op_name, $op_species, $op_adoption_fee, $op_status, $op_image_path);
+$owner_pets = [];
+while (mysqli_stmt_fetch($stmt2)) {
+    $owner_pets[] = ['pet_id' => $op_pet_id, 'name' => $op_name, 'species' => $op_species, 'adoption_fee' => $op_adoption_fee, 'status' => $op_status, 'image_path' => $op_image_path];
+}
+mysqli_stmt_close($stmt2);
 $pet_count = 0;
-while ($pet = mysqli_fetch_assoc($result)) {
+foreach ($owner_pets as $pet) {
     $pet_count++;
     $statusClass = 'badge-status-' . strtolower($pet['status']);
 ?>

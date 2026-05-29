@@ -42,6 +42,9 @@ while ($row = mysqli_fetch_assoc($result)) {
 </div>
 </div>
 
+<div class="home-section">
+    <div class="container">
+
 <h2 class="home-section-title">
     <span class="material-icons">favorite</span> Recently Added Pets
 </h2>
@@ -66,6 +69,9 @@ while ($pet = mysqli_fetch_assoc($result)) {
         </div>
     </div>
 <?php } ?>
+</div>
+
+    </div>
 </div>
 
 <?php include 'includes/footer.inc'; ?>

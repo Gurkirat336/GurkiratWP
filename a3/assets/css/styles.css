@@ -201,6 +201,11 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     margin-bottom: 1.5rem;
 }
 
+.gallery-filter-select {
+    width: auto;
+    display: inline-block;
+}
+
 .gallery-heading {
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
@@ -590,6 +595,23 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 .pet-fee {
     color: var(--text-light);
     font-size: 0.85rem;
+}
+
+.home-section {
+    background-color: #0f0e1a;
+    padding: 2rem 0;
+}
+
+.home-section .home-section-title {
+    color: #ffffff;
+}
+
+.home-section .pet-name-link {
+    color: #ffffff;
+}
+
+.home-section .pet-price {
+    color: #a5b4fc;
 }
 
 .current-photo-thumb {
